@@ -26,9 +26,10 @@ def after_message_sent_hook(message, conversation, participants):
     else:
         content = current_user['username'] + " sent you a file."
     notification = {'gcm': {
-                       'notification': {
+                       'data': {
                            'title': conversation['title'],
-                           'body': content
+                           'body': content,
+                           'conversation_id': conversation.id.key
                        }
                     },
                     'apns': {
